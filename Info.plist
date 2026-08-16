@@ -15,9 +15,9 @@
 	<key>CFBundleName</key>
 	<string>SeaDrive</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0.21</string>
+	<string>3.0.24</string>
 	<key>CFBundleVersion</key>
-	<string>3.0.21</string>
+	<string>3.0.24</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
     <key>CFBundleURLTypes</key>
@@ -122,6 +122,38 @@
 			<string>locked-by-me.icns</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.seafile.seadrive.locked-by-me</string>
+			<key>UTTypeReferenceURL</key>
+			<string></string>
+			<key>UTTypeTagSpecification</key>
+			<dict/>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.icon-decoration.badge</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Always keep downloaded</string>
+			<key>UTTypeIconFile</key>
+			<string>keep-downloaded.icns</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.seafile.seadrive.keep-downloaded</string>
+			<key>UTTypeReferenceURL</key>
+			<string></string>
+			<key>UTTypeTagSpecification</key>
+			<dict/>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.icon-decoration.badge</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Readonly</string>
+			<key>UTTypeIconFile</key>
+			<string>readonly.icns</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.seafile.seadrive.readonly</string>
 			<key>UTTypeReferenceURL</key>
 			<string></string>
 			<key>UTTypeTagSpecification</key>

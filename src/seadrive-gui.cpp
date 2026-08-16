@@ -396,6 +396,11 @@ void SeadriveGui::start()
                    "Please upgrade your macOS or downgrade SeaDrive to 3.0.9").arg(STRINGIZE(SEADRIVE_GUI_VERSION)));
         return;
     }
+
+    // Domains left behind by an account that was removed while we were not
+    // running, or by a version that never unregistered them, keep the
+    // extension enumerating an account that no longer exists.
+    file_provider_mgr_->removeOrphanedDomains(account_mgr_->allAccounts());
 #endif
 
 #ifdef Q_OS_MAC
@@ -701,12 +706,12 @@ void SeadriveGui::connectDaemon()
         auto account = account_mgr_->getAccountByDomainID(domain_id);
         if (!account.isValid()) {
             // account has been deleted, remove account from domain.
-            // Unregister the FileProvider domain first so macOS stops
-            // sending enumerator signals for a domain that's going away.
-#ifdef Q_OS_MAC
-            fileProviderRemoveDomain(domain_id);
-#endif
             rpc_client->deleteDomainAccount(domain_id);
+            // Then unregister the domain, so macOS stops handing enumerator
+            // requests to an extension that has no account behind it. This has
+            // to happen after the RPC above: removing the domain stops the
+            // extension, and the daemon along with it.
+            fileProviderRemoveDomain(domain_id);
             if (!checkOSVersion144()) {
                 stopDaemon();
             }
